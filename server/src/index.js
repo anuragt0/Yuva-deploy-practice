@@ -24,7 +24,7 @@ app.use("/api/admin/auth", require("./api/routes/admin.js"));
 
 app.use("/api/public", require("./api/routes/public.js"));
 
-app.listen(5000, () => {
+app.listen(process.env.port || 5000, () => {
   console.log("Server is listening at port 5000");
 
   // createDir(vars.imageFile.ORIGINAL_UPLOADS_DIR_PATH);
