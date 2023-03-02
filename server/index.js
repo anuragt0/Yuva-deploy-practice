@@ -8,21 +8,21 @@ app.use(cors());
 app.use(express.json()); // to use req.body
 
 // Mine
-const connectToMongoDB = require("./databases/mongodb/config");
+const connectToMongoDB = require("./src/databases/mongodb/config");
 connectToMongoDB();
 
-const { createDir } = require("./utilities/helper_functions");
-const { vars } = require("./utilities/constants");
+const { createDir } = require("./src/utilities/helper_functions");
+const { vars } = require("./src/utilities/constants");
 
 // routes
 app.get('/', (req,res)=>{
     res.send("Hellow");
 })
-app.use("/api/user/auth", require("./api/routes/user.js"));
+app.use("/api/user/auth", require("./src/api/routes/user.js"));
 
-app.use("/api/admin/auth", require("./api/routes/admin.js"));
+app.use("/api/admin/auth", require("./src/api/routes/admin.js"));
 
-app.use("/api/public", require("./api/routes/public.js"));
+app.use("/api/public", require("./src/api/routes/public.js"));
 
 app.listen(process.env.port || 5000, () => {
   console.log("Server is listening at port 5000");
